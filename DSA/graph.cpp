@@ -29,6 +29,24 @@ class Graph{
                 cout<<endl;
             }
         }
+
+        void dfsRec(int node, vector<bool>&visited){
+            visited[node]=true;
+            cout<<"Node: "<<node<<endl;
+
+            for(int nei : arr[node]){
+                if(!visited[nei]){
+                    dfsRec(nei, visited);
+                }
+            }
+        }
+
+        void dfs(int start){
+            vector<bool>visited(ver, false);
+            cout<<"Start "<<start<<endl;
+            dfsRec(start, visited);
+            cout<<endl;
+        }
 };
 
 int main(){
@@ -42,14 +60,15 @@ int main(){
     // ud.addNodeUD(2,4);
 
     ud.display();
+    ud.dfs(2);
 
-    Graph dr(5);
+    // Graph dr(5);
 
-    dr.addNodeDR(0,1);
-    dr.addNodeDR(1,2);
-    dr.addNodeDR(2,3);
-    dr.addNodeDR(3,4);
     // dr.addNodeDR(0,1);
-    cout<<"\n"<<endl;
-    dr.display();
+    // dr.addNodeDR(1,2);
+    // dr.addNodeDR(2,3);
+    // dr.addNodeDR(3,4);
+    // // dr.addNodeDR(0,1);
+    // cout<<"\n"<<endl;
+    // dr.display();
 }
